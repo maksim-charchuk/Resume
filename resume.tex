@@ -1,130 +1,153 @@
-\documentclass[]{deedy-resume-openfont}
+\documentclass{article}
+\usepackage[cm]{fullpage}
+\usepackage{color}
+\usepackage{hyperref}
 
+\hypersetup{breaklinks=true,%
+pagecolor=white,%
+colorlinks=true,%
+linkcolor=cyan,%
+urlcolor=MyDarkBlue}
+
+\definecolor{MyDarkBlue}{rgb}{0,0.0,0.45}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formatting parameters  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newlength{\tabin}
+\setlength{\tabin}{1em}
+\newlength{\secsep}
+\setlength{\secsep}{0.1cm}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0in}
+\setlength{\itemsep}{0in}
+\setlength{\topsep}{0in}
+\setlength{\tabcolsep}{0in}
+
+\definecolor{contactgray}{gray}{0.3}
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Template Definitions  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\lineunder}{\vspace*{-8pt} \\ \hspace*{-6pt} \hrulefill \\ \vspace*{-15pt}}
+\newcommand{\name}[1]{\begin{center}\textsc{\Huge#1}\\\end{center}}
+\newcommand{\program}[1]{\begin{center}\textsc{#1}\end{center}}
+\newcommand{\contact}[1]{\begin{center}\color{contactgray}{\small#1}\end{center}}
+
+\newenvironment{tabbedsection}[1]{
+  \begin{list}{}{
+      \setlength{\itemsep}{0pt}
+      \setlength{\labelsep}{0pt}
+      \setlength{\labelwidth}{0pt}
+      \setlength{\leftmargin}{\tabin}
+      \setlength{\rightmargin}{\tabin}
+      \setlength{\listparindent}{0pt}
+      \setlength{\parsep}{0pt}
+      \setlength{\parskip}{0pt}
+      \setlength{\partopsep}{0pt}
+      \setlength{\topsep}{#1}
+    }
+  \item[]
+}{\end{list}}
+
+\newenvironment{nospacetabbing}{
+    \begin{tabbing}
+}{\end{tabbing}\vspace{-1.2em}}
+
+\newenvironment{resume_header}{}{\vspace{0pt}}
+
+
+\newenvironment{resume_section}[1]{
+  \filbreak
+  \vspace{2\secsep}
+  \textsc{\large#1}
+  \lineunder
+  \begin{tabbedsection}{\secsep}
+}{\end{tabbedsection}}
+
+\newenvironment{resume_subsection}[2][]{
+  \textbf{#2} \hfill {\footnotesize #1} \hspace{2em}
+  \begin{tabbedsection}{0.5\secsep}
+}{\end{tabbedsection}}
+
+\newenvironment{subitems}{
+  \renewcommand{\labelitemi}{-}
+  \begin{itemize}
+      \setlength{\labelsep}{1em}
+}{\end{itemize}}
+
+\newenvironment{resume_employer}[4]{
+  \vspace{\secsep}
+  \textbf{#1} \\ 
+  \indent {\small #2} \hfill {\footnotesize#3 (#4)}
+  \begin{tabbedsection}{0pt}
+  \begin{subitems}
+}{\end{subitems}\end{tabbedsection}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Start Document     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
-\namesection{Maksim}{Charchuk}{maxim.cherchuk@gmail.com | +37529-110-1128}
+\begin{resume_header}
+\name{{\fontfamily{qpl}\selectfont Maksim Charchuk}}
+\contact{maxim.cherchuk@gmail.com \hspace{2cm} +375291101128}
+\end{resume_header}
+
+\begin{resume_section}{{\fontfamily{qpl}\selectfont Education}}
+  \begin{resume_subsection}[Belarus, Minsk (2014 -- 2018)]{Belarusian State University}
+    \begin{subitems}
+      \item Bachelor of Mathematics (Computer Science)
+    \end{subitems}
+  \end{resume_subsection}
+  
+  
+  \begin{resume_subsection}[Belarus, Minsk (2012 -- 2014)]{Lyceum of BSU}
+    \begin{subitems}
+      \item Cummulative Average: 92\%
+     \end{subitems}
+  \end{resume_subsection}
+\end{resume_section}
+
+\begin{resume_section}{{\fontfamily{qpl}\selectfont About Me}}
+  \begin{nospacetabbing}
+  \textbf{Technical Skills}  \= C++, Python, Bash, \LaTeX, SQL \\*
+  \textbf{Web} \>  Amazon Web Services, Docker, Django, Tornado, jQuery \\*
+  \textbf{Languages} \> Fluent in Russian; Conversational Proficiency in English \\*
+  \textbf{Interests} \> Computer Graphics, Competitive Programming, Basketball \\*
+  \end{nospacetabbing}
+\end{resume_section}
 
 
-\begin{minipage}[t]{0.40\textwidth}
+\begin{resume_section}{{\fontfamily{qpl}\selectfont Work Experience}}
+  \begin{resume_employer}{Invento Labs}{Software Developer}{Minsk, Belarus}{February 2017 -- October 2017}
+    \item Worked on 3D Blender renderer needed to apply materials selected for the model and demonstrate 3D models in real time
+    \item Implemented Django backend for the rendering system
+    \item All code was reviewed, perfected, and pushed to production
+  \end{resume_employer}
+  
+  \begin{resume_employer}{iTechArt Group}{Software Developer}{Minsk, Belarus}{March 2018 -- November 2019}
+    \item Worked on \href{www.smiledirectclub.com}{smiledirectclub.com} backend
+    \item Implemented microservices for the authentication and payment systems. 
+    \item Integrated the microservices with Amazon Web Services
+  \end{resume_employer}
+\end{resume_section}
 
-\section{Education} 
-\large
-\subsection{Belarusian State University}
-\descript{Faculty of Applied Mathematics and computer science}
-\descript{Bachelor in Computer Science}
-\location{Grad. June 2018 | Minsk, Belarus}
-\sectionsep
-\sectionsep
-
-\subsection{Lyceum of BSU}
-\descript{Grad. June 2014 | Minsk, Belarus}
-
-
-
-\end{minipage} 
-\hfill
-\begin{minipage}[t]{0.59\textwidth} 
-
-
-\section{Coursework}
-\large
-Data Structures and Algorithms \\
-3D Graphics \\
-Computer Vision \\
-Expressions Parsing \\
-\sectionsep
-
-\end{minipage} 
-
-\vspace{\topsep}
-
-\begin{minipage}[t]{0.40\textwidth}
-
-\section{Links}
-\large
-Github://\href{https://github.com/MaximCherchuk}{\custombold{MaximCherchuk}} \\
-LinkedIn://\href{https://www.linkedin.com/in/maxim-cherchuk-6305aaa5/}{\custombold{maxim-cherchuk}} \\
-Codeforces://\href{http://codeforces.com/profile/MaxCherchuk}{\custombold{MaximCherchuk}} \\
-Facebook://\href{https://www.facebook.com/profile.php?id=100004263036771}{\custombold{Maxim Cherchuk}}
-\sectionsep
-
-\end{minipage}
-\begin{minipage}[t]{0.59\textwidth}
-
-\section{Skills}
-\subsection{Programming}
-\location{Over 5000 lines:}
-\large
-Java \textbullet{} Python \textbullet{} C++\ \\
-\sectionsep
-\location{Over 1000 lines:}
-\large
-C \textbullet{} C\# \textbullet{} \LaTeX \\
-\sectionsep
-
-\location{Strong skills:}
-\large
-SQL \textbullet{} PostgreSQL \textbullet{} Bash
-\sectionsep
-
-\location{Familiar:}
-\large
-\textbullet{} OrientDB \textbullet{} JavaScript \textbullet{} PyOpenCV
-\sectionsep
-
-\subsection{Languages}
-\vspace{\topsep}
-\begin{tightemize}
-\item Russian: Native
-\item English: Advanced (speaking, reading, writing)
-\end{tightemize}
-\sectionsep
-\end{minipage}
-
-\section{WORK EXPERIENCE}
-
-\section{{\custombold{Invento Labs}}}
-
-\descript{C++/Python Developer}
-\location{February 2017 – October 2017 | Minsk, Belarus}
-\vspace{\topsep} % Hacky fix for awkward extra vertical space
-\begin{tightemize}
-\large
-\item Worked on 3D Blender renderer needed to apply materials selected for the model and demonstrate 3D models in real time.
-\item Implemented Django backend for the rendering system.
-\item All code was reviewed, perfected, and pushed to production.
-\end{tightemize}
-\sectionsep
-
-
-\section{{\custombold{iTechArt Group}}}
-
-\descript{Python Developer}
-\location{March 2018 – present | Minsk, Belarus}
-\vspace{\topsep} % Hacky fix for awkward extra vertical space
-\begin{tightemize}
-\large
-\item Work on \href{https://smiledirectclub.com}{{\custombold{smiledirectclub.com}}} backend.
-\item Implement microservices and payment systems.
-\item Integrate the microservices with AWS.
-\end{tightemize}
-\sectionsep
-
-
-\vspace{\topsep}
-\begin{minipage}[t]{1\textwidth}
-\section{Technical Experience}
-\begin{tightemize}
-\vspace{\topsep}
-\large
-\item Implemented a lot of fancy features for Minetest. C++
-\item Working on CV system calculating paths and managing objects in real time. Python
-\item Developed a 3D Java Engine for showing different 3D-model types. Java
-
-
-\end{tightemize}
-\sectionsep
-\end{minipage}
+\begin{resume_section}{{\fontfamily{qpl}\selectfont Competitions and Personal Projects}}
+  \begin{resume_subsection}[(Feburary 2013)]{Rotman International Trading Competition}
+  \begin{subitems}
+    \item Developed quantitative strategies and applied them during the competition againts undergraduate and graduate students from schools around the world
+    \item Implemented Excel VBA macros to facilitate trading and to datamine the simulated cases for research
+    \item Wrote a bot for the Algo Case in VBA using their RIT client API that optimizes asset liquidation and profit from arbitrage
+    \end{subitems}
+  \end{resume_subsection}
+\end{resume_section}
 
 \end{document}
+
