@@ -1,153 +1,100 @@
-\documentclass{article}
-\usepackage[cm]{fullpage}
-\usepackage{color}
-\usepackage{hyperref}
-
-\hypersetup{breaklinks=true,%
-pagecolor=white,%
-colorlinks=true,%
-linkcolor=cyan,%
-urlcolor=MyDarkBlue}
-
-\definecolor{MyDarkBlue}{rgb}{0,0.0,0.45}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Formatting parameters  %
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newlength{\tabin}
-\setlength{\tabin}{1em}
-\newlength{\secsep}
-\setlength{\secsep}{0.1cm}
-
-\setlength{\parindent}{0in}
-\setlength{\parskip}{0in}
-\setlength{\itemsep}{0in}
-\setlength{\topsep}{0in}
-\setlength{\tabcolsep}{0in}
-
-\definecolor{contactgray}{gray}{0.3}
-\pagestyle{empty}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Template Definitions  %
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\lineunder}{\vspace*{-8pt} \\ \hspace*{-6pt} \hrulefill \\ \vspace*{-15pt}}
-\newcommand{\name}[1]{\begin{center}\textsc{\Huge#1}\\\end{center}}
-\newcommand{\program}[1]{\begin{center}\textsc{#1}\end{center}}
-\newcommand{\contact}[1]{\begin{center}\color{contactgray}{\small#1}\end{center}}
-
-\newenvironment{tabbedsection}[1]{
-  \begin{list}{}{
-      \setlength{\itemsep}{0pt}
-      \setlength{\labelsep}{0pt}
-      \setlength{\labelwidth}{0pt}
-      \setlength{\leftmargin}{\tabin}
-      \setlength{\rightmargin}{\tabin}
-      \setlength{\listparindent}{0pt}
-      \setlength{\parsep}{0pt}
-      \setlength{\parskip}{0pt}
-      \setlength{\partopsep}{0pt}
-      \setlength{\topsep}{#1}
-    }
-  \item[]
-}{\end{list}}
-
-\newenvironment{nospacetabbing}{
-    \begin{tabbing}
-}{\end{tabbing}\vspace{-1.2em}}
-
-\newenvironment{resume_header}{}{\vspace{0pt}}
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% Awesome CV LaTeX Template for CV/Resume
+%
+% This template has been downloaded from:
+% https://github.com/posquit0/Awesome-CV
+%
+% Author:
+% Claud D. Park <posquit0.bj@gmail.com>
+% http://www.posquit0.com
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%
 
 
-\newenvironment{resume_section}[1]{
-  \filbreak
-  \vspace{2\secsep}
-  \textsc{\large#1}
-  \lineunder
-  \begin{tabbedsection}{\secsep}
-}{\end{tabbedsection}}
+%-------------------------------------------------------------------------------
+% CONFIGURATIONS
+%-------------------------------------------------------------------------------
+% A4 paper size by default, use 'letterpaper' for US letter
+\documentclass[11pt, a4paper]{awesome-cv}
 
-\newenvironment{resume_subsection}[2][]{
-  \textbf{#2} \hfill {\footnotesize #1} \hspace{2em}
-  \begin{tabbedsection}{0.5\secsep}
-}{\end{tabbedsection}}
+% Configure page margins with geometry
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
 
-\newenvironment{subitems}{
-  \renewcommand{\labelitemi}{-}
-  \begin{itemize}
-      \setlength{\labelsep}{1em}
-}{\end{itemize}}
+% Specify the location of the included fonts
+\fontdir[fonts/]
 
-\newenvironment{resume_employer}[4]{
-  \vspace{\secsep}
-  \textbf{#1} \\ 
-  \indent {\small #2} \hfill {\footnotesize#3 (#4)}
-  \begin{tabbedsection}{0pt}
-  \begin{subitems}
-}{\end{subitems}\end{tabbedsection}}
+% Color for highlights
+% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+%                 awesome-nephritis, awesome-concrete, awesome-darknight
+\colorlet{awesome}{awesome-red}
+% Uncomment if you would like to specify your own color
+% \definecolor{awesome}{HTML}{CA63A8}
+
+% Colors for text
+% Uncomment if you would like to specify your own color
+% \definecolor{darktext}{HTML}{414141}
+% \definecolor{text}{HTML}{333333}
+% \definecolor{graytext}{HTML}{5D5D5D}
+% \definecolor{lighttext}{HTML}{999999}
+
+% Set false if you don't want to highlight section with awesome color
+\setbool{acvSectionColorHighlight}{true}
+
+% If you would like to change the social information separator from a pipe (|) to something else
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     Start Document     %
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+%-------------------------------------------------------------------------------
+%	PERSONAL INFORMATION
+%	Comment any of the lines below if they are not required
+%-------------------------------------------------------------------------------
+% Available options: circle|rectangle,edge/noedge,left/right
+% \photo[rectangle,edge,right]{./examples/profile}
+\name{Maksim}{Charchuk}
+\position{Software Developer}
+\address{Minsk, Belarus}
 
+\mobile{+375(29)110-11-28}
+\email{maxim.cherchuk@gmail.com}
+\github{maksim-charchuk}
+\linkedin{maksim-charchuk-6305aaa5/}
+% \gitlab{gitlab-id}
+% \stackoverflow{SO-id}{SO-name}
+% \twitter{@twit}
+% \skype{skype-id}
+% \reddit{reddit-id}
+% \medium{madium-id}
+% \googlescholar{googlescholar-id}{name-to-display}
+%% \firstname and \lastname will be used
+% \googlescholar{googlescholar-id}{}
+% \extrainfo{extra informations}
+
+%-------------------------------------------------------------------------------
 \begin{document}
 
-\begin{resume_header}
-\name{{\fontfamily{qpl}\selectfont Maksim Charchuk}}
-\contact{maxim.cherchuk@gmail.com \hspace{2cm} +375291101128}
-\end{resume_header}
+% Print the header with above personal informations
+% Give optional argument to change alignment(C: center, L: left, R: right)
+\makecvheader[C]
 
-\begin{resume_section}{{\fontfamily{qpl}\selectfont Education}}
-  \begin{resume_subsection}[Belarus, Minsk (2014 -- 2018)]{Belarusian State University}
-    \begin{subitems}
-      \item Bachelor of Mathematics (Computer Science)
-    \end{subitems}
-  \end{resume_subsection}
-  
-  
-  \begin{resume_subsection}[Belarus, Minsk (2012 -- 2014)]{Lyceum of BSU}
-    \begin{subitems}
-      \item Cummulative Average: 92\%
-     \end{subitems}
-  \end{resume_subsection}
-\end{resume_section}
-
-\begin{resume_section}{{\fontfamily{qpl}\selectfont About Me}}
-  \begin{nospacetabbing}
-  \textbf{Technical Skills}  \= C++, Python, Bash, \LaTeX, SQL \\*
-  \textbf{Web} \>  Amazon Web Services, Docker, Django, Tornado, jQuery \\*
-  \textbf{Languages} \> Fluent in Russian; Conversational Proficiency in English \\*
-  \textbf{Interests} \> Computer Graphics, Competitive Programming, Basketball \\*
-  \end{nospacetabbing}
-\end{resume_section}
+% Print the footer with 3 arguments(<left>, <center>, <right>)
+% Leave any of these blank if they are not needed
+\makecvfooter
+  {\today}
+  {Maksim Charchuk~~~·~~~Résumé}
+  {\thepage}
 
 
-\begin{resume_section}{{\fontfamily{qpl}\selectfont Work Experience}}
-  \begin{resume_employer}{Invento Labs}{Software Developer}{Minsk, Belarus}{February 2017 -- October 2017}
-    \item Worked on 3D Blender renderer needed to apply materials selected for the model and demonstrate 3D models in real time
-    \item Implemented Django backend for the rendering system
-    \item All code was reviewed, perfected, and pushed to production
-  \end{resume_employer}
-  
-  \begin{resume_employer}{iTechArt Group}{Software Developer}{Minsk, Belarus}{March 2018 -- November 2019}
-    \item Worked on \href{www.smiledirectclub.com}{smiledirectclub.com} backend
-    \item Implemented microservices for the authentication and payment systems. 
-    \item Integrated the microservices with Amazon Web Services
-  \end{resume_employer}
-\end{resume_section}
+%-------------------------------------------------------------------------------
+%	CV/RESUME CONTENT
+%	Each section is imported separately, open each file in turn to modify content
+%-------------------------------------------------------------------------------
 
-\begin{resume_section}{{\fontfamily{qpl}\selectfont Competitions and Personal Projects}}
-  \begin{resume_subsection}[(Feburary 2013)]{Rotman International Trading Competition}
-  \begin{subitems}
-    \item Developed quantitative strategies and applied them during the competition againts undergraduate and graduate students from schools around the world
-    \item Implemented Excel VBA macros to facilitate trading and to datamine the simulated cases for research
-    \item Wrote a bot for the Algo Case in VBA using their RIT client API that optimizes asset liquidation and profit from arbitrage
-    \end{subitems}
-  \end{resume_subsection}
-\end{resume_section}
+\input{resume/education.tex}
+\input{resume/about.tex}
+\input{resume/experience.tex}
 
+%-------------------------------------------------------------------------------
 \end{document}
-
